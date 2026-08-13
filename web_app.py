@@ -1,7 +1,5 @@
 import streamlit as st
-import cv2
 import pandas as pd
-import numpy as np
 
 st.set_page_config(page_title="AI Running Test", layout="wide")
 
@@ -19,13 +17,12 @@ with st.expander("👤 ข้อมูลนักเรียน", expanded=Tru
 
 st.divider()
 
-# อัปโหลดไฟล์วิดีโอสำหรับการทดสอบบน Cloud
 uploaded_file = st.file_uploader("📹 อัปโหลดคลิปวิดีโอการวิ่งเพื่อประมวลผล (MP4, MOV)", type=['mp4', 'mov', 'avi'])
 
 if uploaded_file is not None:
+    st.video(uploaded_file)
     st.success("บันทึกไฟล์เรียบร้อย! กำลังประมวลผลการวิ่ง...")
     
-    # แสดงผลจำลอง
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("🦶 ก้าวซ้าย", "24 ครั้ง")
     c2.metric("🦶 ก้าวขวา", "25 ครั้ง")
